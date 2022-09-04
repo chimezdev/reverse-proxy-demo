@@ -1,12 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1  #changed this from extensions/v1beta1
+kind: Deployment     #check the deploy folder to see the original yaml file
 metadata:
   labels:
     service: reverseproxy
   name: reverseproxy
 spec:
-  replicas: 1
-  selector:
+  replicas: 1   #this was the source of the error
+  selector:     #added this selector to match the spec.template.metadata.label
     matchLabels:
       service: reverseproxy
   template:
